@@ -34,6 +34,7 @@ const loadCategory = async (categoryId) => {
       console.log(err);
    }
 }
+loadCategory(08);
 
 const disPlayNews = async (datas) => {
    if (datas.length === 0) {
@@ -87,6 +88,7 @@ const disPlayNews = async (datas) => {
    })
 }
 
+
 const showDetails = async (showId) => {
    const url = `https://openapi.programming-hero.com/api/news/${showId}`;
    try {
@@ -99,7 +101,25 @@ const showDetails = async (showId) => {
    }
 }
 
-const displayModal = async () => {
-
+const displayModal = async (singleData) => {
+   console.log(singleData);
+   const { author, thumbnail_url, image_url, details, title, rating, _id } = singleData;
+   const { img, name, published_date } = author;
+   const cardTitle = document.getElementById('showModalLabel');
+   cardTitle.innerHTML = `${title}`
+   const modalContainer = document.getElementById('modal-body');
+   modalContainer.innerHTML = `
+      <img class="img-fluid" src="${image_url}">
+      <h5></h5>
+      <p>${details.slice(0,100)}</p>
+      <p>${details.length > 100 ? details.slice(0, 100) + '...' : details}</p>
+      <div class="d-flex align-items-center">
+         <img class="my-img me-3" src="${img}" alt="...">
+         <div>
+            <span>${name === 'system'? 'No Name' : name}</span><br>
+            <span>${published_date ? published_date : 'No date'}</span>
+         </div>
+      </div> 
+   `;
    console.log('hello modal');
 }
