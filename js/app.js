@@ -14,7 +14,7 @@ const showMenu = async () => {
    const newsCategory = await loadNewPortal();
    const categoryList = document.getElementById('category-list')
    newsCategory.forEach(category => {
-      console.log(category);
+      // console.log(category);
       const li = document.createElement('li');
       // li.classList.add('active');
       li.style.listStyle = 'none';
@@ -62,6 +62,7 @@ const loadCategory = async (categoryId) => {
 //home page data load all below when is active
 
 const disPlayNews = async (datas) => {
+   console.log(datas);
    if (datas.length === 0) {
       const noneData = document.getElementById('none-data');
       noneData.classList.remove('d-none');
@@ -77,6 +78,9 @@ const disPlayNews = async (datas) => {
    // const categoryNews = await loadCategory(categoryId);
    const cardContainer = document.getElementById('card-container');
    cardContainer.innerHTML = '';
+   datas.sort((a, b) => {
+      return b.rating.number - a.rating.number;
+   });
    datas.forEach(data => {
       const { author, thumbnail_url, image_url, details, title, rating, _id } = data;
       const { img, name, published_date } = author;
