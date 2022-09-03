@@ -96,7 +96,7 @@ const disPlayNews = async (datas) => {
             <div class="card-body">
             <h5 class="card-title">${title}</h5>
             <p class="card-text">${details.slice(0, 200)}</p>
-            <p class="card-text">${details.length > 100 ? details.slice(0, 100) + '...' : details}</p>
+            <p class="card-text">${details.length > 200 ? details.slice(200, 250) + '...' : details}</p>
             <div class="d-flex justify-content-between align-items-center pt-4">
                <div class="d-flex align-items-center">
                   <img class="my-img me-3" src="${img}" alt="...">
