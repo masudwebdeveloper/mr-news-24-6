@@ -47,8 +47,8 @@ const spinnerLoading = isLoading => {
 }
 const loadCategory = async (categoryId) => {
       // start spinner
-      spinnerLoading(true);
       const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`;
+      spinnerLoading(true);
       try {
          const res = await fetch(url);
          const data = await res.json();

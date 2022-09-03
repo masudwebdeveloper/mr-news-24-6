@@ -48,7 +48,26 @@
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  <p>
+                     <h6>var</h6>
+                     1. The scope of a var variable is functional scope. <br>
+                     2. It can be updated and re-declare into scope. <br>
+                     3. It can be declare without initialize. <br>
+                     4. It can be accessed without initialization as its default value is “undefined" <br>
+                     5. hoisting done , with initializing as default value <br>
+                     <h6>let</h6>
+                     1. The scope of a let variable is block scope <br>
+                     2. It can be updated but cannot be re-declared into the scope. <br>
+                     3. It can be declared without initialization <br>
+                     4. It cannot be accessed without initialization otherwise it will give referenceError. <br>
+                     5. Hoisting is done , but not initialized (this is the reason for error when we access the let variable before declaration/initialization. <br>
+                     <h6>const</h6>
+                     1. The scope of a const variable is block scope. <br>
+                     2. It cannot be updated or re-declared into the scope. <br>
+                     3. It cannot be declared without initialization. <br>
+                     4. It cannot be accessed without initialization, as it cannot be declared without initialization. <br>
+                     5. Hoisting is done, but not initialized (this is the reason for error when we access the const variable before declaration/initialization.
+                  </p>
                 </div>
               </div>
             </div>
@@ -60,7 +79,7 @@
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions.
                 </div>
               </div>
             </div>
@@ -72,19 +91,36 @@
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  <div>
+                     <h5>map</h5>
+                     <p>
+                        Definition and Usage. map() creates a new array from calling a function for every array element. map() calls a function once for each element in an array. map() does not execute the function for empty elements. map() does not change the original array
+                     </p>
+                  </div>
+                  <div>
+                     <h5>forEach</h5>
+                     <p>The forEach() method executes a provided function once for each array element.</p>
+                  </div>
+                  <div>
+                     <h5>filter</h5>
+                     <p>The filter() method creates a new array filled with elements that pass a test provided by a function. The filter() method does not execute the function for empty elements. The filter() method does not change the original array.</p>
+                  </div>
+                  <div>
+                     <h5>find</h5>
+                     <p>find() method in Javascript is used to get the value of the first element in the array that satisfies the provided condition. It checks all the elements of the array and whichever first element satisfies the condition is going to print.</p>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  How to use tempalete String?
+                  Why to use tempalete String?
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  Template literals provide an easy way to interpolate variables and expressions into strings. The method is called string interpolation
                 </div>
               </div>
             </div>
