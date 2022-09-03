@@ -86,7 +86,7 @@ const disPlayNews = async (datas) => {
                </div>   
                <div><i class="fa-solid fa-eye"></i> ${number}M</div>
                <div>
-               <button data-bs-toggle="modal" data-bs-target="#showModal" class="border-0 px-3" onclick="showDetails('${_id}')"><i class="fa-solid fa-arrow-right text-info"></i></button>
+               <button data-bs-toggle="modal" data-bs-target="#showModal" class="border-0 px-3" onclick="showDetails('${_id}')"><i class="fa-solid fa-arrow-right text-primary"></i></button>
                </div>
             </div>
             </div>
