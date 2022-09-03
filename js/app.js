@@ -48,13 +48,11 @@ const disPlayNews = async (datas) => {
       showDataLen.classList.remove('d-none');
       showDataLen.innerHTML = `${datas.length} Items data is avaiable`
    }
-   // console.log(datas);
    // const categoryNews = await loadCategory(categoryId);
    const cardContainer = document.getElementById('card-container');
    cardContainer.innerHTML = '';
    datas.forEach(data => {
-      console.log(data);
-      const { author, thumbnail_url, image_url, details, title, rating } = data;
+      const { author, thumbnail_url, image_url, details, title, rating, _id } = data;
       const { img, name, published_date } = author;
       const { number} = rating;
       const cardDiv = document.createElement('div');
@@ -79,7 +77,7 @@ const disPlayNews = async (datas) => {
                </div>   
                <div><i class="fa-solid fa-eye"></i> ${number}M</div>
                <div>
-               <a><i class="fa-solid fa-arrow-right"></i></a>
+               <button data-bs-toggle="modal" data-bs-target="#showModal" class="border-0 px-3" onclick="showDetails('${_id}')"><i class="fa-solid fa-arrow-right text-info"></i></button>
                </div>
             </div>
             </div>
@@ -87,4 +85,21 @@ const disPlayNews = async (datas) => {
       </div>`;
       cardContainer.appendChild(cardDiv);
    })
+}
+
+const showDetails = async (showId) => {
+   const url = `https://openapi.programming-hero.com/api/news/${showId}`;
+   try {
+      const res = await fetch(url);
+      const data = await res.json();
+      displayModal(data.data[0]);
+   }
+   catch (err) {
+      console.log(err);
+   }
+}
+
+const displayModal = async () => {
+
+   console.log('hello modal');
 }
