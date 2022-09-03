@@ -46,18 +46,31 @@
    </header>
    <!-- header section end -->
    <!-- main section start -->
-   <main class="container mr-mt">   
+   <main class="container mr-mt mr-mb">   
       <section id="category-section" class="py-3">
          <ul id="category-list"
-            class="d-flex justify-content-lg-between flex-column flex-md-row flex-md-wrap align-items-center flex-lg-row ps-0">
+            class="d-flex flex-lg-wrap justify-content-lg-between flex-column flex-md-row align-items-center flex-lg-row ps-0">
             <!-- category list -->
          </ul>
       </section>
       <section class="bg-light text-dark d-flex flex-column align-items-center" style="height: 50px">
-         <!-- <h3 class=""></h3>
-         <h3 id="none-data" class="d-none">Data is not available</h3>
-         <h3 id="show-data" class=""><span id="category-name"></span></h3> -->
          <h3 id="demo"></h3>
+      </section>
+      <!-- sort by default -->
+      <section class="my-4">
+         <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center w-25">
+               <span class="w-75">Sort By View :</span>
+               <select id="language" onchange="loadCategory(01)" class="form-select" aria-label="Default select example">
+                  <option >Default</option>
+                  <option value="1">Breaking News</option>
+                </select>
+            </div>
+            <div>
+               <button class="btn btn-primary">Today's Pics</button>
+               <button class="btn btn-outline-primary">Trending</button>
+            </div>
+         </div>
       </section>
       <!-- loading spniner -->
       <section id="loading-spinner" class="d-none">

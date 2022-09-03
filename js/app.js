@@ -13,15 +13,15 @@ const loadNewPortal = async () => {
 const showMenu = async () => {
    const newsCategory = await loadNewPortal();
    const categoryList = document.getElementById('category-list')
-   const showDataLen = document.getElementById('category-name');
    newsCategory.forEach(category => {
       const li = document.createElement('li');
-      // li.classList.add('active');
+      li.classList.add('mractive');
       li.style.listStyle = 'none';
       li.style.cursor = 'pointer';
       li.innerHTML = `<a onclick="loadCategory(${category.category_id})">${category.category_name}</a>`;
          categoryList.appendChild(li);
-      })
+   })
+   
    }
 showMenu();
 
@@ -54,24 +54,6 @@ const disPlayNews = async (datas) => {
    const newsCategory = await loadNewPortal();
    const demoId = document.getElementById('demo');
    demoId.innerHTML = `${datas.length} items found from this Category`;
-   // newsCategory.forEach(categoryName => {
-   //    const { category_name } = categoryName;
-      
-   // })
-
-   // if (datas.length === 0) {
-   //    const noneData = document.getElementById('none-data');
-   //    noneData.classList.remove('d-none');
-   //    const showDataLen = document.getElementById('show-data');
-   //    showDataLen.classList.add('d-none');
-   // } else {
-   //    const noneData = document.getElementById('none-data');
-   //    noneData.classList.add('d-none');
-   //    const showDataLen = document.getElementById('show-data');
-   //    showDataLen.classList.remove('d-none');
-   //    showDataLen.innerHTML = `${datas.length} Items data is available`;
-   // }
-   // const categoryNews = await loadCategory(categoryId);
    const cardContainer = document.getElementById('card-container');
    cardContainer.innerHTML = '';
    datas.sort((a, b) => {
@@ -130,7 +112,6 @@ const showDetails = async (showId) => {
 }
 
 const displayModal = async (singleData) => {
-   console.log(singleData);
    const { author, thumbnail_url, image_url, details, title, rating, _id } = singleData;
    const { img, name, published_date } = author;
    const cardTitle = document.getElementById('showModalLabel');
@@ -151,4 +132,3 @@ const displayModal = async (singleData) => {
    `;
    console.log('hello modal');
 }
-
