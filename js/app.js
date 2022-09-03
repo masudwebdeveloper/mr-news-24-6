@@ -13,29 +13,18 @@ const loadNewPortal = async () => {
 const showMenu = async () => {
    const newsCategory = await loadNewPortal();
    const categoryList = document.getElementById('category-list')
+   const showDataLen = document.getElementById('category-name');
    newsCategory.forEach(category => {
-      // console.log(category);
       const li = document.createElement('li');
       // li.classList.add('active');
       li.style.listStyle = 'none';
       li.style.cursor = 'pointer';
       li.innerHTML = `<a onclick="loadCategory(${category.category_id})">${category.category_name}</a>`;
-      
-      
-      
-      
-      // btns[i].addEventListener("click", function() {
-         //    var current = document.getElementsByClassName("active");
-         //    current[0].className = current[0].className.replace(" active", "");
-         //    this.className += " active";
-         
-         
          categoryList.appendChild(li);
-         // console.log(category.category_name);
-         
       })
    }
 showMenu();
+
 // toggler spinner function
 const spinnerLoading = isLoading => {
    const loadSpiner = document.getElementById('loading-spinner');
@@ -46,8 +35,8 @@ const spinnerLoading = isLoading => {
    }
 }
 const loadCategory = async (categoryId) => {
-      // start spinner
-      const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`;
+   const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`;
+   // start spinner
       spinnerLoading(true);
       try {
          const res = await fetch(url);
@@ -58,23 +47,30 @@ const loadCategory = async (categoryId) => {
          console.log(err);
       }
    }
+   //home page a all data load korte nicer function ta active rakhte hobe
    loadCategory(08);
-//home page data load all below when is active
 
 const disPlayNews = async (datas) => {
-   console.log(datas);
-   if (datas.length === 0) {
-      const noneData = document.getElementById('none-data');
-      noneData.classList.remove('d-none');
-      const showDataLen = document.getElementById('show-data');
-      showDataLen.classList.add('d-none');
-   } else {
-      const noneData = document.getElementById('none-data');
-      noneData.classList.add('d-none');
-      const showDataLen = document.getElementById('show-data');
-      showDataLen.classList.remove('d-none');
-      showDataLen.innerHTML = `${datas.length} Items data is avaiable`
-   }
+   const newsCategory = await loadNewPortal();
+   const demoId = document.getElementById('demo');
+   demoId.innerHTML = `${datas.length} items found from this Category`;
+   // newsCategory.forEach(categoryName => {
+   //    const { category_name } = categoryName;
+      
+   // })
+
+   // if (datas.length === 0) {
+   //    const noneData = document.getElementById('none-data');
+   //    noneData.classList.remove('d-none');
+   //    const showDataLen = document.getElementById('show-data');
+   //    showDataLen.classList.add('d-none');
+   // } else {
+   //    const noneData = document.getElementById('none-data');
+   //    noneData.classList.add('d-none');
+   //    const showDataLen = document.getElementById('show-data');
+   //    showDataLen.classList.remove('d-none');
+   //    showDataLen.innerHTML = `${datas.length} Items data is available`;
+   // }
    // const categoryNews = await loadCategory(categoryId);
    const cardContainer = document.getElementById('card-container');
    cardContainer.innerHTML = '';
@@ -82,6 +78,7 @@ const disPlayNews = async (datas) => {
       return b.rating.number - a.rating.number;
    });
    datas.forEach(data => {
+      // console.log(data);
       const { author, thumbnail_url, image_url, details, title, rating, _id } = data;
       const { img, name, published_date } = author;
       const { number } = rating;
