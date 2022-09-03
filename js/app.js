@@ -14,27 +14,52 @@ const showMenu = async () => {
    const newsCategory = await loadNewPortal();
    const categoryList = document.getElementById('category-list')
    newsCategory.forEach(category => {
+      console.log(category);
       const li = document.createElement('li');
+      // li.classList.add('active');
       li.style.listStyle = 'none';
       li.style.cursor = 'pointer';
       li.innerHTML = `<a onclick="loadCategory(${category.category_id})">${category.category_name}</a>`;
-      categoryList.appendChild(li);
-      // console.log(category.category_name);
-   })
-}
+      
+      
+      
+      
+      // btns[i].addEventListener("click", function() {
+         //    var current = document.getElementsByClassName("active");
+         //    current[0].className = current[0].className.replace(" active", "");
+         //    this.className += " active";
+         
+         
+         categoryList.appendChild(li);
+         // console.log(category.category_name);
+         
+      })
+   }
 showMenu();
-const loadCategory = async (categoryId) => {
-   const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`;
-   try {
-      const res = await fetch(url);
-      const data = await res.json();
-      disPlayNews(data.data);
-   }
-   catch (err) {
-      console.log(err);
+// toggler spinner function
+const spinnerLoading = isLoading => {
+   const loadSpiner = document.getElementById('loading-spinner');
+   if (isLoading) {
+      loadSpiner.classList.remove('d-none');
+   } else {
+      loadSpiner.classList.add('d-none');
    }
 }
-loadCategory(08);
+const loadCategory = async (categoryId) => {
+      // start spinner
+      spinnerLoading(true);
+      const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`;
+      try {
+         const res = await fetch(url);
+         const data = await res.json();
+         disPlayNews(data.data);
+      }
+      catch (err) {
+         console.log(err);
+      }
+   }
+   loadCategory(08);
+//home page data load all below when is active
 
 const disPlayNews = async (datas) => {
    if (datas.length === 0) {
@@ -55,7 +80,7 @@ const disPlayNews = async (datas) => {
    datas.forEach(data => {
       const { author, thumbnail_url, image_url, details, title, rating, _id } = data;
       const { img, name, published_date } = author;
-      const { number} = rating;
+      const { number } = rating;
       const cardDiv = document.createElement('div');
       cardDiv.classList.add('card', 'mb-3');
       cardDiv.innerHTML = `
@@ -66,13 +91,13 @@ const disPlayNews = async (datas) => {
          <div class="col-md-10">
             <div class="card-body">
             <h5 class="card-title">${title}</h5>
-            <p class="card-text">${details.slice(0,200)}</p>
-            <p class="card-text">${details.length > 100 ? details.slice(0,100) +'...': details}</p>
+            <p class="card-text">${details.slice(0, 200)}</p>
+            <p class="card-text">${details.length > 100 ? details.slice(0, 100) + '...' : details}</p>
             <div class="d-flex justify-content-between align-items-center pt-4">
                <div class="d-flex align-items-center">
                   <img class="my-img me-3" src="${img}" alt="...">
                   <div>
-                     <span>${name === 'system'? 'No Name' : name}</span><br>
+                     <span>${name === 'system' ? 'No Name' : name}</span><br>
                      <span>${published_date ? published_date : 'No date'}</span>
                   </div>
                </div>   
@@ -85,7 +110,9 @@ const disPlayNews = async (datas) => {
          </div>
       </div>`;
       cardContainer.appendChild(cardDiv);
-   })
+   });
+   // stop spinner
+   spinnerLoading(false);
 }
 
 
@@ -111,15 +138,16 @@ const displayModal = async (singleData) => {
    modalContainer.innerHTML = `
       <img class="img-fluid" src="${image_url}">
       <h5></h5>
-      <p>${details.slice(0,100)}</p>
+      <p>${details.slice(0, 100)}</p>
       <p>${details.length > 100 ? details.slice(0, 100) + '...' : details}</p>
       <div class="d-flex align-items-center">
          <img class="my-img me-3" src="${img}" alt="...">
          <div>
-            <span>${name === 'system'? 'No Name' : name}</span><br>
+            <span>${name === 'system' ? 'No Name' : name}</span><br>
             <span>${published_date ? published_date : 'No date'}</span>
          </div>
       </div> 
    `;
    console.log('hello modal');
 }
+
